@@ -1,0 +1,1144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodSprint | Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --primary-light: #FF8C5A;
+            --primary-dark: #E55A2B;
+            --secondary: #2B2D42;
+            --accent: #06D6A0;
+            --gray: #8D99AE;
+            --gray-light: #F4F6F9;
+            --white: #FFFFFF;
+            --danger: #FF4757;
+            --success: #06D6A0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gray-light);
+            color: var(--secondary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-btn:hover {
+            background: var(--gray-light);
+            color: var(--primary);
+        }
+
+        .nav-btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .nav-btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .nav-btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .nav-btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* ==================== MAIN CONTENT ==================== */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* ==================== AUTH CONTAINER ==================== */
+        .auth-container {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* ==================== LEFT BANNER ==================== */
+        .auth-banner {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #FFB347 100%);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+        }
+
+        .auth-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+            animation: pulse 12s ease-in-out infinite;
+        }
+
+        .auth-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .auth-banner h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .auth-banner p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            max-width: 320px;
+            line-height: 1.6;
+        }
+
+        .banner-features {
+            margin-top: 2.5rem;
+            text-align: left;
+        }
+
+        .banner-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .banner-feature i {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Decorative Elements */
+        .floating-food {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: floatFood 6s ease-in-out infinite;
+        }
+
+        .floating-food:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-food:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .floating-food:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 2s; }
+        .floating-food:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 3s; }
+
+        @keyframes floatFood {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(15deg); }
+        }
+
+        /* ==================== RIGHT FORM ==================== */
+        .auth-form-container {
+            flex: 1.2;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 140, 90, 0.15));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 2rem;
+        }
+
+        .form-header h1 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* ==================== FORM STYLES ==================== */
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-group {
+            flex: 1;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group label .required {
+            color: var(--danger);
+            margin-left: 2px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.95rem 1rem 0.95rem 2.85rem;
+            border: 2px solid #E8E8E8;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-input:focus + .input-icon,
+        .input-wrapper:focus-within .input-icon {
+            color: var(--primary);
+        }
+
+        .form-input::placeholder {
+            color: #B8B8B8;
+        }
+
+        .form-input:hover {
+            border-color: #D0D0D0;
+        }
+
+        /* Password Toggle */
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.25rem;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+
+        /* Password Strength Indicator */
+        .password-strength {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .strength-bar {
+            flex: 1;
+            height: 4px;
+            background: #E8E8E8;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .strength-bar.weak { background: var(--danger); }
+        .strength-bar.medium { background: #FFC107; }
+        .strength-bar.strong { background: var(--success); }
+
+        .password-hint {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-top: 0.35rem;
+        }
+
+        /* Select Dropdown */
+        .form-select {
+            width: 100%;
+            padding: 0.95rem 2.5rem 0.95rem 2.85rem;
+            border: 2px solid #E8E8E8;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+            background: var(--white);
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .select-wrapper:focus-within::after {
+            color: var(--primary);
+        }
+
+        /* Textarea */
+        .form-textarea {
+            width: 100%;
+            padding: 0.95rem 1rem 0.95rem 2.85rem;
+            border: 2px solid #E8E8E8;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+            background: var(--white);
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .checkbox-wrapper {
+            position: relative;
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .checkbox-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .checkbox-custom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 22px;
+            height: 22px;
+            background: var(--white);
+            border: 2px solid #D0D0D0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-custom::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            color: var(--white);
+            font-size: 0.7rem;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-input:checked + .checkbox-custom {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .checkbox-input:checked + .checkbox-custom::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .checkbox-input:focus + .checkbox-custom {
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .checkbox-label {
+            font-size: 0.875rem;
+            color: var(--gray);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .checkbox-label a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+
+        /* ==================== SUBMIT BUTTON ==================== */
+        .btn-submit {
+            width: 100%;
+            padding: 1.1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-submit i {
+            font-size: 1.1rem;
+        }
+
+        /* ==================== DIVIDER ==================== */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.75rem 0;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #E0E0E0, transparent);
+        }
+
+        .divider-text {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* ==================== SOCIAL LOGIN ==================== */
+        .social-login {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-social {
+            flex: 1;
+            padding: 0.85rem;
+            border: 2px solid #E8E8E8;
+            border-radius: 12px;
+            background: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .btn-social:hover {
+            border-color: var(--primary);
+            background: rgba(255, 107, 53, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .btn-social i {
+            font-size: 1.2rem;
+        }
+
+        .btn-social.google i {
+            color: #DB4437;
+        }
+
+        .btn-social.facebook i {
+            color: #4267B2;
+        }
+
+        .btn-social.apple i {
+            color: #000000;
+        }
+
+        /* ==================== AUTH FOOTER ==================== */
+        .auth-footer {
+            text-align: center;
+            margin-top: 1.75rem;
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ==================== MESSAGES ==================== */
+        .message {
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-message {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(255, 71, 87, 0.2);
+        }
+
+        .success-message {
+            background: rgba(6, 214, 160, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(6, 214, 160, 0.2);
+        }
+
+        .message i {
+            font-size: 1.1rem;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .auth-container {
+                max-width: 95%;
+            }
+
+            .auth-banner {
+                padding: 2rem;
+            }
+
+            .auth-form-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .auth-banner {
+                display: none;
+            }
+
+            .auth-container {
+                max-width: 550px;
+            }
+
+            .auth-form-container {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 1rem;
+            }
+
+            .nav-btn span {
+                display: none;
+            }
+
+            .nav-btn {
+                padding: 0.6rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .auth-form-container {
+                padding: 1.75rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 1.25rem;
+            }
+
+            .form-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .social-login {
+                flex-direction: column;
+            }
+
+            .form-header-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .auth-form-container {
+                padding: 1.25rem;
+            }
+
+            .form-input,
+            .form-select,
+            .form-textarea {
+                padding: 0.85rem 0.85rem 0.85rem 2.5rem;
+                font-size: 0.9rem;
+            }
+
+            .btn-submit {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <a href="restaurent" class="logo">
+            <div class="logo-icon">🍽️</div>
+            <div class="logo-text">Food<span>Sprint</span></div>
+        </a>
+        
+        <div class="nav-actions">
+            <a href="restaurent" class="nav-btn">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="Menu" class="nav-btn">
+                <i class="fas fa-utensils"></i>
+                <span>Menu</span>
+            </a>
+            <a href="Login.html" class="nav-btn nav-btn-primary">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Login</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+        <div class="auth-container">
+            
+            <!-- ==================== LEFT BANNER ==================== -->
+            <div class="auth-banner">
+                <!-- Floating Food Items -->
+                <span class="floating-food">🍕</span>
+                <span class="floating-food">🍔</span>
+                <span class="floating-food">🌮</span>
+                <span class="floating-food">🍜</span>
+                
+                <div class="banner-content">
+                    <div class="banner-icon">🍕</div>
+                    <h2>Join FoodSprint</h2>
+                    <p>Create an account and discover the best food from your favorite restaurants delivered to your door.</p>
+                    
+                    <div class="banner-features">
+                        <div class="banner-feature">
+                            <i class="fas fa-truck"></i>
+                            <span>Fast & Free Delivery</span>
+                        </div>
+                        <div class="banner-feature">
+                            <i class="fas fa-percent"></i>
+                            <span>Exclusive Offers & Discounts</span>
+                        </div>
+                        <div class="banner-feature">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Real-time Order Tracking</span>
+                        </div>
+                        <div class="banner-feature">
+                            <i class="fas fa-headset"></i>
+                            <span>24/7 Customer Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== RIGHT FORM ==================== -->
+            <div class="auth-form-container">
+                <div class="form-header">
+                    <div class="form-header-icon">👤</div>
+                    <h1>Create Your Account</h1>
+                    <p>Fill in your details to get started with FoodSprint</p>
+                </div>
+
+                <!-- Error Message -->
+                <% if(request.getAttribute("error") != null) { %>
+                <div class="message error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span><%= request.getAttribute("error") %></span>
+                </div>
+                <% } %>
+
+                <!-- Success Message -->
+                <% if(request.getAttribute("success") != null) { %>
+                <div class="message success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <span><%= request.getAttribute("success") %></span>
+                </div>
+                <% } %>
+
+                <!-- Registration Form -->
+                <form action="Login.html" method="post" class="auth-form" id="registerForm">
+                    
+                    <!-- Name Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <input type="text" id="firstName" name="firstName" class="form-input" 
+                                       placeholder="Enter first name" required>
+                                <i class="fas fa-user input-icon"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <input type="text" id="lastName" name="lastName" class="form-input" 
+                                       placeholder="Enter last name" required>
+                                <i class="fas fa-user input-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" class="form-input" 
+                                   placeholder="Enter your email address" required>
+                            <i class="fas fa-envelope input-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="tel" id="phone" name="phone" class="form-input" 
+                                   placeholder="Enter your phone number" required>
+                            <i class="fas fa-phone input-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Password Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <input type="password" id="password" name="password" class="form-input" 
+                                       placeholder="Create password" required minlength="8">
+                                <i class="fas fa-lock input-icon"></i>
+                                <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength" id="passwordStrength">
+                                <div class="strength-bar"></div>
+                                <div class="strength-bar"></div>
+                                <div class="strength-bar"></div>
+                                <div class="strength-bar"></div>
+                            </div>
+                            <p class="password-hint">Min. 8 characters with letters & numbers</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" 
+                                       placeholder="Confirm password" required>
+                                <i class="fas fa-lock input-icon"></i>
+                                <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="address">Delivery Address</label>
+                        <div class="input-wrapper">
+                            <textarea id="address" name="address" class="form-textarea" 
+                                      placeholder="Enter your full delivery address"></textarea>
+                            <i class="fas fa-map-marker-alt input-icon" style="top: 1rem; transform: none;"></i>
+                        </div>
+                    </div>
+
+                    <!-- Terms Checkbox -->
+                    <div class="checkbox-group">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="terms" name="terms" class="checkbox-input" required>
+                            <span class="checkbox-custom"></span>
+                        </div>
+                        <label for="terms" class="checkbox-label">
+                            I agree to the <a href="terms.jsp">Terms of Service</a> and 
+                            <a href="privacy.jsp">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <!-- Newsletter Checkbox -->
+                    <div class="checkbox-group">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="newsletter" name="newsletter" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                        </div>
+                        <label for="newsletter" class="checkbox-label">
+                            Send me special offers, discounts, and updates via email
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-user-plus"></i>
+                        Create Account
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">or sign up with</span>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Social Login -->
+                <div class="social-login">
+                    <button type="button" class="btn-social google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="btn-social facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+
+                <!-- Login Link -->
+                <div class="auth-footer">
+                    Already have an account? <a href="Login.html">Sign in here</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Toggle Password Visibility
+        function togglePassword(fieldId, button) {
+            const field = document.getElementById(fieldId);
+            const icon = button.querySelector('i');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Password Strength Checker
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthBars = document.querySelectorAll('.strength-bar');
+            let strength = 0;
+
+            // Reset bars
+            strengthBars.forEach(bar => {
+                bar.classList.remove('weak', 'medium', 'strong');
+            });
+
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+            if (password.match(/\d/)) strength++;
+            if (password.match(/[^a-zA-Z\d]/)) strength++;
+
+            for (let i = 0; i < strength; i++) {
+                if (strength <= 1) {
+                    strengthBars[i].classList.add('weak');
+                } else if (strength <= 2) {
+                    strengthBars[i].classList.add('medium');
+                } else {
+                    strengthBars[i].classList.add('strong');
+                }
+            }
+        });
+
+        // Form Validation
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const phone = document.getElementById('phone').value;
+
+            // Password match validation
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+                return false;
+            }
+
+            // Password length validation
+            if (password.length < 8) {
+                e.preventDefault();
+                alert('Password must be at least 8 characters long!');
+                return false;
+            }
+
+            // Phone validation (basic)
+            const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+            if (!phoneRegex.test(phone)) {
+                e.preventDefault();
+                alert('Please enter a valid phone number!');
+                return false;
+            }
+
+            return true;
+        });
+
+        // Real-time password match indicator
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword.length > 0) {
+                if (password === confirmPassword) {
+                    this.style.borderColor = '#06D6A0';
+                } else {
+                    this.style.borderColor = '#FF4757';
+                }
+            } else {
+                this.style.borderColor = '#E8E8E8';
+            }
+        });
+    </script>
+
+</body>
+</html>

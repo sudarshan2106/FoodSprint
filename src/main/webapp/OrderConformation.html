@@ -1,0 +1,1044 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodSprint | Order Confirmed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --primary-light: #FF8C5A;
+            --primary-dark: #E85A2A;
+            --secondary: #2B2D42;
+            --accent: #06D6A0;
+            --accent-light: #0aedb3;
+            --warning: #FFD166;
+            --dark: #1A1A2E;
+            --dark-light: #252540;
+            --gray: #8D99AE;
+            --gray-light: #EDF2F4;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+            --gradient-accent: linear-gradient(135deg, #06D6A0 0%, #0aedb3 100%);
+            --gradient-dark: linear-gradient(135deg, #1A1A2E 0%, #2B2D42 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 50px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--gray-light);
+            color: var(--secondary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            white-space: nowrap;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-shrink: 0;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: var(--radius-full);
+            font-weight: 500;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-btn i {
+            font-size: 0.8rem;
+        }
+
+        .nav-btn-ghost {
+            background: transparent;
+            color: var(--secondary);
+        }
+
+        .nav-btn-ghost:hover {
+            background: var(--gray-light);
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Success Animation Container */
+        .success-container {
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Animated Checkmark */
+        .checkmark-circle {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: scaleIn 0.5s ease-out, pulse 2s ease-in-out infinite 0.5s;
+            box-shadow: 0 10px 40px rgba(6, 214, 160, 0.4);
+        }
+
+        .checkmark-circle::before {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: ripple 2s ease-in-out infinite;
+        }
+
+        .checkmark-circle::after {
+            content: '';
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: ripple 2s ease-in-out infinite 0.3s;
+        }
+
+        .checkmark-circle i {
+            font-size: 3.5rem;
+            color: var(--white);
+            animation: checkPop 0.4s ease-out 0.3s both;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes checkPop {
+            0% {
+                transform: scale(0) rotate(-45deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Success Title */
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .success-title span {
+            color: var(--accent);
+        }
+
+        .success-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Order Card */
+        .order-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .order-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px dashed var(--gray-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .order-id-section {
+            text-align: left;
+        }
+
+        .order-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .order-id {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .order-date {
+            text-align: right;
+        }
+
+        .date-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Status Timeline */
+        .status-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .status-timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 60px;
+            right: 60px;
+            height: 4px;
+            background: var(--gray-light);
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .status-timeline::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 60px;
+            width: 25%;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+            z-index: 1;
+            animation: progressBar 1s ease-out 0.8s both;
+        }
+
+        @keyframes progressBar {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 25%;
+            }
+        }
+
+        .status-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .status-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            background: var(--gray-light);
+            color: var(--gray);
+            transition: all 0.3s ease;
+        }
+
+        .status-icon.active {
+            background: var(--gradient-accent);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(6, 214, 160, 0.4);
+        }
+
+        .status-icon.completed {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .status-text {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        .status-text.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Info Boxes */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .info-box {
+            background: var(--gray-light);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .info-icon.delivery {
+            background: linear-gradient(135deg, #4e73df 0%, #6f8ce8 100%);
+            color: var(--white);
+        }
+
+        .info-icon.payment {
+            background: linear-gradient(135deg, #06D6A0 0%, #0aedb3 100%);
+            color: var(--white);
+        }
+
+        .info-icon.time {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+            color: var(--white);
+        }
+
+        .info-icon.support {
+            background: linear-gradient(135deg, #5f259f 0%, #8b45c6 100%);
+            color: var(--white);
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-outline {
+            background: var(--white);
+            color: var(--secondary);
+            border: 2px solid var(--gray-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -20px;
+            animation: confettiFall 4s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand .logo-icon {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+        }
+
+        .footer-brand .logo-text {
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom p {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        /* Mobile Bottom Nav */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 0.5rem 1rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.1rem;
+        }
+
+        .mobile-nav-item.active,
+        .mobile-nav-item:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+
+            main {
+                padding: 1.5rem 1rem;
+            }
+
+            .success-title {
+                font-size: 1.75rem;
+            }
+
+            .success-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .order-card {
+                padding: 1.5rem;
+            }
+
+            .order-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .order-id-section,
+            .order-date {
+                text-align: center;
+            }
+
+            .status-timeline {
+                padding: 0;
+            }
+
+            .status-timeline::before,
+            .status-timeline::after {
+                left: 40px;
+                right: 40px;
+            }
+
+            .status-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+            }
+
+            .status-text {
+                font-size: 0.65rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 70px;
+            }
+
+            .nav-btn .btn-text {
+                display: none;
+            }
+
+            .checkmark-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .checkmark-circle i {
+                font-size: 2.5rem;
+            }
+
+            .checkmark-circle::before {
+                width: 120px;
+                height: 120px;
+            }
+
+            .checkmark-circle::after {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .status-timeline::before,
+            .status-timeline::after {
+                display: none;
+            }
+
+            .status-timeline {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .status-step {
+                flex: 0 0 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti Container -->
+    <div class="confetti" id="confetti"></div>
+
+    <header>
+        <a href="restaurent" class="logo">
+            <div class="logo-icon">🍽️</div>
+            <div class="logo-text">Food<span>Sprint</span></div>
+        </a>
+        
+        <div class="nav-actions">
+            <a href="restaurent" class="nav-btn nav-btn-ghost">
+                <i class="fas fa-home"></i>
+                <span class="btn-text">Home</span>
+            </a>
+            <a href="#" class="nav-btn nav-btn-ghost">
+                <i class="fas fa-user-circle"></i>
+                <span class="btn-text">Profile</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-items">
+            <a href="index.jsp" class="mobile-nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i class="fas fa-receipt"></i>
+                <span>Orders</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i class="fas fa-heart"></i>
+                <span>Favorites</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <div class="success-container">
+            <!-- Animated Checkmark -->
+            <div class="checkmark-circle">
+                <i class="fas fa-check"></i>
+            </div>
+
+            <!-- Success Message -->
+            <h1 class="success-title">Order <span>Confirmed!</span></h1>
+            <p class="success-subtitle">Thank you for your order. Your delicious food is on its way!</p>
+<center>
+            <!-- Order Card -->
+            <div class="order-card">
+                <!-- Order Header -->
+                <div class="order-header">
+                    <div class="order-id-section">
+                        <div class="order-label"></div>
+                        <div class="order-id" id=""></div>
+                    </div>
+                    <div class="order-date">
+                        <div class="order-label">Order Date</div>
+                        <div class="date-value" id="orderDate">Loading...</div>
+                    </div>
+                </div>
+
+                <!-- Status Timeline -->
+                <div class="status-timeline">
+                    <div class="status-step">
+                        <div class="status-icon completed">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="status-text">Order Placed</span>
+                    </div>
+                    <div class="status-step">
+                        <div class="status-icon active">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <span class="status-text active">Preparing</span>
+                    </div>
+                    <div class="status-step">
+                        <div class="status-icon">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <span class="status-text">On the Way</span>
+                    </div>
+                    <div class="status-step">
+                        <div class="status-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span class="status-text">Delivered</span>
+                    </div>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="info-grid">
+                    <div class="info-box">
+                        <div class="info-icon time">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Estimated Delivery</div>
+                            <div class="info-value" id="deliveryTime">30-45 minutes</div>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-icon delivery">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Delivery Address</div>
+                            <div class="info-value">Your saved address</div>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-icon payment">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Payment Method</div>
+                            <div class="info-value">As selected</div>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-icon support">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Need Help?</div>
+                            <div class="info-value">24/7 Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</center>
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="#" class="btn btn-outline">
+                    <i class="fas fa-list-alt"></i>
+                    Track Order
+                </a>
+                <a href="restaurent" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i>
+                    Continue Shopping
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo-icon">🍽️</div>
+                <div class="logo-text">Food<span>Sprint</span></div>
+            </div>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Help</a>
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 FoodSprint. All rights reserved. Made with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Generate Order ID
+        function generateOrderId() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = '';
+            for (let i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return `#FS-2024-${result}`;
+        }
+
+        // Format Date
+        function formatDate(date) {
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Calculate Delivery Time
+        function calculateDeliveryTime() {
+            const now = new Date();
+            const minTime = new Date(now.getTime() + 30 * 60000);
+            const maxTime = new Date(now.getTime() + 45 * 60000);
+            
+            const formatTime = (date) => {
+                return date.toLocaleTimeString('en-US', { 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: true 
+                });
+            };
+            
+            return `${formatTime(minTime)} - ${formatTime(maxTime)}`;
+        }
+
+        // Create Confetti
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#FF6B35', '#06D6A0', '#FFD166', '#4e73df', '#8b45c6', '#00b9f1'];
+            const shapes = ['circle', 'square', 'triangle'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                    const left = Math.random() * 100;
+                    const delay = Math.random() * 0.5;
+                    const size = Math.random() * 8 + 6;
+                    
+                    confetti.style.left = `${left}%`;
+                    confetti.style.animationDelay = `${delay}s`;
+                    confetti.style.width = `${size}px`;
+                    confetti.style.height = `${size}px`;
+                    confetti.style.background = color;
+                    
+                    if (shape === 'circle') {
+                        confetti.style.borderRadius = '50%';
+                    } else if (shape === 'triangle') {
+                        confetti.style.width = '0';
+                        confetti.style.height = '0';
+                        confetti.style.background = 'transparent';
+                        confetti.style.borderLeft = `${size/2}px solid transparent`;
+                        confetti.style.borderRight = `${size/2}px solid transparent`;
+                        confetti.style.borderBottom = `${size}px solid ${color}`;
+                    }
+                    
+                    confettiContainer.appendChild(confetti);
+                    
+                    // Remove confetti after animation
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }, i * 50);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set Order ID
+            document.getElementById('orderId').textContent = generateOrderId();
+            
+            // Set Order Date
+            document.getElementById('orderDate').textContent = formatDate(new Date());
+            
+            // Set Delivery Time
+            document.getElementById('deliveryTime').textContent = calculateDeliveryTime();
+            
+            // Trigger confetti
+            setTimeout(createConfetti, 500);
+        });
+
+        // Mobile nav active state
+        document.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.mobile-nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
